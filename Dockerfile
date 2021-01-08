@@ -1,10 +1,8 @@
 FROM jellyfin/jellyfin:10.6.4
 
 # remove jellyfin repo to avoid invalid signatures error
-RUN [ -f "/etc/apt/sources.list.d/jellyfin.list" ] && rm -f "/etc/apt/sources.list.d/jellyfin.list"
-
-# install nginx
-RUN apt-get update \
+RUN [ -f "/etc/apt/sources.list.d/jellyfin.list" ] && rm -f "/etc/apt/sources.list.d/jellyfin.list" \
+    && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
         nginx nginx-extras apache2-utils \
     && apt-get clean autoclean -y \
