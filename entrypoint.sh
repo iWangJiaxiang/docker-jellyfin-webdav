@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if [[ -n "$USERNAME" ]] && [[ -n "$PASSWORD" ]]
+if [[ -n "$WEBDAV_USERNAME" ]] && [[ -n "$WEBDAV_PASSWORD" ]]
 then
-	htpasswd -bc /etc/nginx/htpasswd $USERNAME $PASSWORD
+    echo Setting WebDAV Auth...    
+	htpasswd -bc /etc/nginx/htpasswd "$WEBDAV_USERNAME" "$WEBDAV_PASSWORD"
 	echo Done.
 else
-    echo Using no auth.
+    echo Using NO WebDAV Auth.
 	sed -i 's%auth_basic "Restricted";% %g' /etc/nginx/conf.d/default.conf
 	sed -i 's%auth_basic_user_file htpasswd;% %g' /etc/nginx/conf.d/default.conf
 fi
