@@ -1,6 +1,6 @@
 # Jellyfin Docker Image With WebDAV Support
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/sashgorokhov/docker-nginx-webdav)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/iWangJiaxiang/docker-jellyfin-webdav)
 
 This Image extends original [Jellyfin Docker Image](https://hub.docker.com/r/jellyfin/jellyfin) with additional Nginx WebDAV Support, to share Jellyfin media storage for better file management experience.
 
