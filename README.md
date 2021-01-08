@@ -21,6 +21,42 @@ This image exports `/media` container folder at port `8088` using WebDAV. Beside
 - `-e WEBDAV_PASSWORD=xxx` for auth (optional)
 - `-v /path/to/folder:/media` for Jellyfin data
 
+## Development
+
+To test WebDAV without auth, run:
+
+```bash
+docker run -d \
+ --name jellyfin-webdav \
+ -v $PWD/config:/config \
+ -v $PWD/cache:/cache \
+ -v $PWD/media:/media \
+ --restart=unless-stopped \
+ -p 8096:8096 \
+ -p 8088:8088 \
+ wangjiaxiang/jellyfin-webdav:dev
+```
+
+To test WebDAV with basic auth, run:
+
+```bash
+docker run -d \
+ --name jellyfin-webdav \
+ -v $PWD/config:/config \
+ -v $PWD/cache:/cache \
+ -v $PWD/media:/media \
+ --restart=unless-stopped \
+ -p 8096:8096 \
+ -p 8088:8088 \
+ -e WEBDAV_USERNAME=webdav \
+ -e WEBDAV_PASSWORD=webdav \
+ wangjiaxiang/jellyfin-webdav:dev
+```
+
+The following resources might be useful for contributors
+
+- [Play with Docker](https://labs.play-with-docker.com/)
+
 ## Supported Docker versions
 
 This image is officially supported on Docker version 1.10.2.
