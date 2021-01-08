@@ -1,28 +1,27 @@
-# Supported tags and respective `Dockerfile` links
+# Jellyfin Docker Image With WebDAV Support
 
--	[`latest` (*Dockerfile*)](https://github.com/sashgorokhov/docker-nginx-webdav/blob/master/Dockerfile)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/sashgorokhov/docker-nginx-webdav)
 
-[![](https://badge.imagelayers.io/sashgorokhov/webdav:latest.svg)](https://imagelayers.io/?images=sashgorokhov/webdav:latest 'Get your own badge on imagelayers.io')
+This Image extends original [Jellyfin Docker Image](https://hub.docker.com/r/jellyfin/jellyfin) with additional Nginx WebDAV Support, to share Jellyfin media storage for better file management experience.
 
-# How to use this image
+With WebDAV support, you could manage Jellyfin media data using NextCloud external storage feature.
 
-```console
-$ docker run --name webdav -p 80:80 -v /media:/media -d sashgorokhov/webdav
-```
-This will start a webdav server listening on the default port of 80.
-Then access it via `http://localhost:80` or `http://host:80` in a browser.
+## Supported tags and respective `Dockerfile` links
 
-This server will serve files located in your /media folder
+-	[`latest` (*Dockerfile*)](https://github.com/iWangJiaxiang/docker-jellyfin-webdav/blob/master/Dockerfile)
 
-Image's supported volumes:
-- `/media` - served directory
+## How to use this image
 
-To restrict access to only authorized users, you can define two environment variables: `USERNAME` and `PASSWORD`
-```console
-$ docker run --name webdav -p 80:80 -v /media:/media -e USERNAME=webdav -e PASSWORD=webdav -d sashgorokhov/webdav
-```
+Please read [Jellyfin Docker Installing Documentation](https://jellyfin.org/docs/general/administration/installing.html#docker) for basic usage.
 
-# Supported Docker versions
+This image exports `/media` container folder at port `8088` using WebDAV. Beside the official options, try following options for WebDAV feature.
+
+- `-p 8088:8088` for WebDAV port
+- `-e WEBDAV_USERNAME=xxx` for auth (optional)
+- `-e WEBDAV_PASSWORD=xxx` for auth (optional)
+- `-v /path/to/folder:/media` for Jellyfin data
+
+## Supported Docker versions
 
 This image is officially supported on Docker version 1.10.2.
 Support for older versions (down to 1.6) is provided on a best-effort basis.
