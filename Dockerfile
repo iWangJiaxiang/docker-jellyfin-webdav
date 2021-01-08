@@ -8,4 +8,4 @@ RUN rm /etc/nginx/sites-enabled/*
 
 COPY entrypoint.sh /
 
-CMD /entrypoint.sh && nginx -g "daemon off;"
+ENTRYPOINT ["/entrypoint.sh"]
