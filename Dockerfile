@@ -1,7 +1,7 @@
 FROM jellyfin/jellyfin:10.6.4
 
-RUN apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests --allow-unauthenticated -y \
+RUN apt-get update --allow-unauthenticated \
+    && apt-get install --no-install-recommends --no-install-suggests -y \
         nginx nginx-extras apache2-utils \
     && apt-get clean autoclean -y \
     && apt-get autoremove -y \
