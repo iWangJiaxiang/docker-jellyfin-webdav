@@ -12,7 +12,7 @@ else
 fi
 
 echo Launching Nginx WebDAV Server...
-nginx -g "daemon off;" &
+nginx
 
 echo Launching Jellyfin Server...
 # launch Jellyfin
